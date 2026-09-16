@@ -52,7 +52,6 @@ public class Login {
             return "Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.";
         }
 
-        // ADD THESE 3 LINES - Save the user so login works
         user.setUsername(username);
         user.setPassword(password);
         user.setCellPhone(cell);

@@ -20,10 +20,9 @@ public class Login {
         return password.length() >= 8 && hasCapital && hasNumber && hasSpecial;
     }
 
-    // Check cell phone: must start with + and international code
-// Regex source: Regex for international phone numbers. Source: https://stackoverflow.com/questions/123559
+    // Reference for regex cell check: W3Schools Java Regex
     public boolean checkCellPhoneNumber(String cell) {
-        return cell.matches("\\+\\d{10,15}");
+        return cell.matches("^\\+27\\d{9}$") || cell.matches("^\\+27\\d{10}$");
     }
 
     // Check login credentials
@@ -34,7 +33,7 @@ public class Login {
     // Return login status
     public String returnLoginStatus(boolean status) {
         if (status) {
-            return "Welcome " + user.getUsername() + ", " + user.getLastName() + " it is great to see you.";
+            return "Welcome " + user.getFirstName() + ", " + user.getLastName() + " it is great to see you again.";
         } else {
             return "Username or password incorrect, please try again.";
         }
@@ -52,7 +51,6 @@ public class Login {
             return "Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.";
         }
 
-        // ADD THESE 3 LINES - Save the user so login works
         user.setUsername(username);
         user.setPassword(password);
         user.setCellPhone(cell);

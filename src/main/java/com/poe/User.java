@@ -1,7 +1,7 @@
 package com.poe;
 
 public class User {
-    private String firstName;   // <- ADD THIS
+    private String firstName;
     private String lastName;
     private String username;
     private String password;
@@ -9,7 +9,7 @@ public class User {
 
     // Constructor - ADD firstName here
     public User(String firstName, String lastName, String username, String password, String cellPhone) {
-        this.firstName = firstName;  // <- ADD THIS
+        this.firstName = firstName;  //
         this.lastName = lastName;
         this.username = username;
         this.password = password;
@@ -17,7 +17,7 @@ public class User {
     }
 
     // Getters so Login class can use them
-    public String getFirstName() { return firstName; }  // <- NOW THIS WORKS
+    public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
     public String getUsername() { return username; }
     public String getPassword() { return password; }

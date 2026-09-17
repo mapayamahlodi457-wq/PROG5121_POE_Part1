@@ -11,7 +11,7 @@ public class LoginTest {
         User user = new User("kyle", "Dube", "kyl_1", "Ch&&sec@ke99!", "+27838968976");
         Login login = new Login(user);
         String result = login.returnLoginStatus(true);
-        assertEquals("Welcome kyl_1, Dube it is great to see you.", result);
+        assertEquals("Welcome kyle, Dube it is great to see you again.", result);
     }
 
     @Test

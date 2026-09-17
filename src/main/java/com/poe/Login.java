@@ -14,15 +14,54 @@ public class Login {
 
     // Check password: >=8, 1 capital, 1 number, 1 special
     public boolean checkPasswordComplexity(String password) {
-        boolean hasCapital = !password.equals(password.toLowerCase());
-        boolean hasNumber = password.matches(".*\\d.*");
-        boolean hasSpecial = password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*");
-        return password.length() >= 8 && hasCapital && hasNumber && hasSpecial;
+        if (password.length() < 8) {
+            return false;
+        }
+
+        boolean hasCapital = false;
+        boolean hasNumber = false;
+        boolean hasSpecial = false;
+
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+            if (Character.isUpperCase(c)) {
+                hasCapital = true;
+            }
+            if (Character.isDigit(c)) {
+                hasNumber = true;
+            }
+        }
+
+        String specialChars = "!@#$%^&*()_+-=[]{};':\"\\|,.<>/?";
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+            if (specialChars.contains(String.valueOf(c))) {
+                hasSpecial = true;
+                break;
+            }
+        }
+
+        return hasCapital && hasNumber && hasSpecial;
     }
 
-    // Reference for regex cell check: W3Schools Java Regex
+    // Check cell: +27 + 9 or 10 digits
     public boolean checkCellPhoneNumber(String cell) {
-        return cell.matches("^\\+27\\d{9}$") || cell.matches("^\\+27\\d{10}$");
+        if (cell == null) {
+            return false;
+        }
+        if (!cell.startsWith("+27")) {
+            return false;
+        }
+        if (cell.length() != 12 && cell.length() != 13) {
+            return false;
+        }
+        String numberPart = cell.substring(3);
+        for (int i = 0; i < numberPart.length(); i++) {
+            if (!Character.isDigit(numberPart.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     // Check login credentials
